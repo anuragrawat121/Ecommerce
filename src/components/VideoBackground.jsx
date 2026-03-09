@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import HomeBg from '../assets/images/HomeBg.mp4'
 import { motion, useScroll, useTransform } from 'framer-motion'
