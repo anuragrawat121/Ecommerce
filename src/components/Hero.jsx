@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import BlurText from "./UI/Blurtext";
+import BlurText from "@/components/UI/BlurText";
 import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
