@@ -1,0 +1,12 @@
+﻿
+C:\Users\arwt8\OneDrive\Desktop\Ecommerce\src\components\Hero.jsx
+  12:30  error  'handleAnimationComplete' is not defined  no-undef
+
+C:\Users\arwt8\OneDrive\Desktop\Ecommerce\src\components\UI\BlurText.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\arwt8\OneDrive\Desktop\Ecommerce\vite.config.js
+  10:25  error  '__dirname' is not defined  no-undef
+
+Γ£û 3 problems (3 errors, 0 warnings)
+
