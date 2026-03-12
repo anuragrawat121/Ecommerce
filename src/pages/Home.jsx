@@ -2,7 +2,7 @@ import React from "react";
 import VideoBackground from "../components/VideoBackground";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Product from "./Product";
+import Collection from "./Collection";
 
 const Home = () => {
   return (
@@ -12,10 +12,9 @@ const Home = () => {
         <Hero />
       </VideoBackground>
       {/* Product page seamlessly scrolls in with its own content */}
-      <Product hideNavbar={true} />
+      <Collection hideNavbar={true} />
     </div>
   );
 };
 
 export default Home;
-
