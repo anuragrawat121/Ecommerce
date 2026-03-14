@@ -20,30 +20,27 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItemClass = ({ isActive }) =>
-    `text-white px-3 py-2 inline-flex items-center gap-2 hover:text-gray-400 transition-colors cursor-pointer ${
-      isActive ? "text-gray-400" : ""
-    }`;
-
-  const mobileNavItemClass = ({ isActive }) =>
-    `text-white text-xl py-4 flex items-center gap-3 w-full justify-center transition-all ${
-      isActive ? "text-gray-400" : ""
-    }`;
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const handleProductClick = (e) => {
+  const scrollToSection = (e, sectionId) => {
     e.preventDefault();
-    if (location.pathname === "/") {
-      const collectionSection = document.getElementById("collection-section");
-      if (collectionSection) {
-        collectionSection.scrollIntoView({ behavior: "smooth" });
-      }
+    if (location.pathname !== "/") {
+      // If not on home page, navigate to home then scroll
+      navigate("/");
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) section.scrollIntoView({ behavior: "smooth" });
+      }, 100); // Small delay to allow DOM to render
     } else {
-      navigate("/collection");
+      // If already on home page, just scroll
+      const section = document.getElementById(sectionId);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     }
     if (isMenuOpen) setIsMenuOpen(false);
   };
+
+  const navItemClass = "text-white px-3 py-2 inline-flex items-center gap-2 hover:text-gray-400 transition-colors cursor-pointer text-sm font-bold uppercase tracking-widest";
+  const mobileNavItemClass = "text-white text-xl py-4 flex items-center gap-3 w-full justify-center transition-all cursor-pointer font-bold uppercase tracking-widest";
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const menuVariants = {
     closed: {
@@ -88,21 +85,18 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6">
-          <NavLink className={navItemClass} to="/">
+          <a className={navItemClass} onClick={(e) => scrollToSection(e, "home-section")}>
             Home
-          </NavLink>
-          <a
-            className="text-white px-3 py-2 inline-flex items-center gap-2 hover:text-gray-400 transition-colors cursor-pointer"
-            onClick={handleProductClick}
-          >
+          </a>
+          <a className={navItemClass} onClick={(e) => scrollToSection(e, "collection-section")}>
             Collection
           </a>
-          <NavLink className={navItemClass} to="/about">
+          <a className={navItemClass} onClick={(e) => scrollToSection(e, "about-section")}>
             About
-          </NavLink>
-          <NavLink className={navItemClass} to="/contact">
+          </a>
+          <a className={navItemClass} onClick={(e) => scrollToSection(e, "contact-section")}>
             Contact
-          </NavLink>
+          </a>
         </div>
 
         {/* Desktop Actions */}
@@ -157,39 +151,24 @@ const Navbar = () => {
           >
             <div className="flex flex-col items-center px-6">
               <motion.div className="w-full" variants={itemVariants}>
-                <NavLink
-                  className={mobileNavItemClass}
-                  to="/"
-                  onClick={toggleMenu}
-                >
+                <a className={mobileNavItemClass} onClick={(e) => scrollToSection(e, "home-section")}>
                   Home
-                </NavLink>
+                </a>
               </motion.div>
               <motion.div className="w-full" variants={itemVariants}>
-                <a
-                  className="text-white text-xl py-4 flex items-center gap-3 w-full justify-center transition-all cursor-pointer"
-                  onClick={handleProductClick}
-                >
+                <a className={mobileNavItemClass} onClick={(e) => scrollToSection(e, "collection-section")}>
                   Collection
                 </a>
               </motion.div>
               <motion.div className="w-full" variants={itemVariants}>
-                <NavLink
-                  className={mobileNavItemClass}
-                  to="/about"
-                  onClick={toggleMenu}
-                >
+                <a className={mobileNavItemClass} onClick={(e) => scrollToSection(e, "about-section")}>
                   About
-                </NavLink>
+                </a>
               </motion.div>
               <motion.div className="w-full" variants={itemVariants}>
-                <NavLink
-                  className={mobileNavItemClass}
-                  to="/contact"
-                  onClick={toggleMenu}
-                >
+                <a className={mobileNavItemClass} onClick={(e) => scrollToSection(e, "contact-section")}>
                   Contact
-                </NavLink>
+                </a>
               </motion.div>
 
               <motion.div
