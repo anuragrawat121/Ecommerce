@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 
@@ -16,6 +17,7 @@ const ProductCard = ({ product, index = 0 }) => {
 
   // Support both the mock data and the new assets.js structure
   const {
+    _id = "1",
     image: rawImage = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600",
     brand = "Off-White",
     name = "ODSY-1000 low-top sneakers",
@@ -32,15 +34,16 @@ const ProductCard = ({ product, index = 0 }) => {
   const image = Array.isArray(rawImage) ? rawImage[0] : rawImage;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={{ y: -5 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group relative bg-white rounded-[20px] p-4 w-full max-w-[260px] shadow-sm hover:shadow-2xl transition-shadow duration-500 border border-gray-100 flex flex-col gap-3 font-sans"
-    >
+    <Link to={`/product/${_id}`} className="block">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: index * 0.05 }}
+        whileHover={{ y: -5 }}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        className="group relative bg-white rounded-[20px] p-4 w-full max-w-[260px] shadow-sm hover:shadow-2xl transition-shadow duration-500 border border-gray-100 flex flex-col gap-3 font-sans h-full"
+      >
       {/* Header - Badge and Favorite */}
       <div className="flex justify-between items-center h-7 relative z-10">
         <div className="flex gap-1.5">
@@ -135,8 +138,8 @@ const ProductCard = ({ product, index = 0 }) => {
 
         <span className="text-[18px] font-black text-gray-900 tracking-tighter italic">${price}</span>
       </div>
-
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 
