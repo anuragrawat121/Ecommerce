@@ -102,7 +102,7 @@ const Navbar = () => {
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
           <button
-            className={navItemClass({ isActive: false })}
+            className={navItemClass}
             onClick={() => setShowSearch(true)}
           >
             <Search size={20} />
