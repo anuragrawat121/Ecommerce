@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
 import Login from "./pages/login";
+import Checkout from "./pages/Checkout";
 import Searchbar from "./components/UI/Searchbar";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
