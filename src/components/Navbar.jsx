@@ -7,7 +7,7 @@ import useProductContext from "../ContextApi/ProductContext";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setShowSearch } = useProductContext();
+  const { setShowSearch, getCartCount } = useProductContext();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -109,7 +109,14 @@ const Navbar = () => {
             <span className="text-sm font-medium">Search</span>
           </button>
           <NavLink className={navItemClass} to="/cart">
-            <ShoppingCart size={20} />
+            <div className="relative">
+              <ShoppingCart size={20} />
+              {getCartCount() > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-black text-[10px] font-black rounded-full flex items-center justify-center">
+                  {getCartCount()}
+                </span>
+              )}
+            </div>
             <span className="text-sm font-medium">Cart</span>
           </NavLink>
           <NavLink className={navItemClass} to="/login">
