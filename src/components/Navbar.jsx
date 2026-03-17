@@ -10,8 +10,13 @@ const Navbar = () => {
   const { setShowSearch, getCartCount } = useProductContext();
   const location = useLocation();
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    // Check login status on mount and when location changes
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
@@ -39,6 +44,13 @@ const Navbar = () => {
 
   const navItemClass = "text-white px-3 py-2 inline-flex items-center gap-2 hover:text-gray-400 transition-colors cursor-pointer text-sm font-bold uppercase tracking-widest";
   const mobileNavItemClass = "text-white text-xl py-4 flex items-center gap-3 w-full justify-center transition-all cursor-pointer font-bold uppercase tracking-widest";
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -119,10 +131,17 @@ const Navbar = () => {
             </div>
             <span className="text-sm font-medium">Cart</span>
           </NavLink>
-          <NavLink className={navItemClass} to="/login">
-            <LogIn size={20} />
-            <span className="text-sm font-medium">Login</span>
-          </NavLink>
+          {isLoggedIn ? (
+            <button className={navItemClass} onClick={handleLogout}>
+              <LogIn size={20} className="rotate-180" />
+              <span className="text-sm font-medium">Logout</span>
+            </button>
+          ) : (
+            <NavLink className={navItemClass} to="/login">
+              <LogIn size={20} />
+              <span className="text-sm font-medium">Login</span>
+            </NavLink>
+          )}
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -206,14 +225,27 @@ const Navbar = () => {
                   <ShoppingCart size={24} />
                   <span className="text-sm">Cart</span>
                 </NavLink>
-                <NavLink
-                  className="flex flex-col items-center gap-2 p-4 text-white hover:text-gray-400 transition-colors"
-                  to="/login"
-                  onClick={toggleMenu}
-                >
-                  <LogIn size={24} />
-                  <span className="text-sm">Login</span>
-                </NavLink>
+                {isLoggedIn ? (
+                  <button
+                    className="flex flex-col items-center gap-2 p-4 text-white hover:text-gray-400 transition-colors"
+                    onClick={() => {
+                      handleLogout();
+                      if (isMenuOpen) setIsMenuOpen(false);
+                    }}
+                  >
+                    <LogIn size={24} className="rotate-180" />
+                    <span className="text-sm">Logout</span>
+                  </button>
+                ) : (
+                  <NavLink
+                    className="flex flex-col items-center gap-2 p-4 text-white hover:text-gray-400 transition-colors"
+                    to="/login"
+                    onClick={toggleMenu}
+                  >
+                    <LogIn size={24} />
+                    <span className="text-sm">Login</span>
+                  </NavLink>
+                )}
               </motion.div>
             </div>
           </motion.div>

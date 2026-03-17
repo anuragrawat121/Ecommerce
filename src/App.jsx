@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
+import Login from "./pages/login";
 import Searchbar from "./components/UI/Searchbar";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
