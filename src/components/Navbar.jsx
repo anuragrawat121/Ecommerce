@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { ShoppingCart, LogIn, Search } from "lucide-react";
+import { ShoppingCart, LogIn, LogOut, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import useProductContext from "../ContextApi/ProductContext";
 
@@ -23,7 +23,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location]);
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
@@ -133,7 +133,7 @@ const Navbar = () => {
           </NavLink>
           {isLoggedIn ? (
             <button className={navItemClass} onClick={handleLogout}>
-              <LogIn size={20} className="rotate-180" />
+              <LogOut size={20} />
               <span className="text-sm font-medium">Logout</span>
             </button>
           ) : (
@@ -233,7 +233,7 @@ const Navbar = () => {
                       if (isMenuOpen) setIsMenuOpen(false);
                     }}
                   >
-                    <LogIn size={24} className="rotate-180" />
+                    <LogOut size={24} />
                     <span className="text-sm">Logout</span>
                   </button>
                 ) : (
