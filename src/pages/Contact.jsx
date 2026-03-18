@@ -11,7 +11,7 @@ const Contact = ({ hideNavbar }) => {
     >
       {!hideNavbar && <Navbar />}
 
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 pt-32">
+      <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 pt-24">
         <div className="grid lg:grid-cols-2 gap-20">
           
           {/* Left Side: Info */}
@@ -22,7 +22,7 @@ const Contact = ({ hideNavbar }) => {
             className="space-y-12"
           >
             <div>
-              <h1 className="text-6xl font-black tracking-tighter uppercase italic leading-none mb-6">
+              <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase italic leading-none mb-6">
                 Connect <br/> <span className="text-gray-500">With Us</span>
               </h1>
               <p className="text-gray-400 max-w-md leading-relaxed">
@@ -81,7 +81,7 @@ const Contact = ({ hideNavbar }) => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white/[0.02] border border-white/10 rounded-[40px] p-8 sm:p-12 shadow-2xl backdrop-blur-3xl"
+            className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-3xl"
           >
             <div className="flex items-center gap-3 mb-10">
               <MessageSquare className="text-gray-500" size={24} />
@@ -89,12 +89,12 @@ const Contact = ({ hideNavbar }) => {
             </div>
 
             <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                 <input type="text" placeholder="Full Name" className="w-full bg-black/50 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-white transition-all text-sm font-medium" />
-                 <input type="email" placeholder="Email Address" className="w-full bg-black/50 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-white transition-all text-sm font-medium" />
+              <div className="grid sm:grid-cols-2 gap-4">
+                 <input type="text" placeholder="Full Name" className="w-full bg-black/50 border border-white/10 rounded-2xl py-3 px-5 focus:outline-none focus:border-white transition-all text-sm font-medium" />
+                 <input type="email" placeholder="Email Address" className="w-full bg-black/50 border border-white/10 rounded-2xl py-3 px-5 focus:outline-none focus:border-white transition-all text-sm font-medium" />
               </div>
-              <input type="text" placeholder="Subject" className="w-full bg-black/50 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-white transition-all text-sm font-medium" />
-              <textarea placeholder="Message" rows="5" className="w-full bg-black/50 border border-white/10 rounded-3xl py-4 px-6 focus:outline-none focus:border-white transition-all text-sm font-medium resize-none"></textarea>
+              <input type="text" placeholder="Subject" className="w-full bg-black/50 border border-white/10 rounded-2xl py-3 px-5 focus:outline-none focus:border-white transition-all text-sm font-medium" />
+              <textarea placeholder="Message" rows="4" className="w-full bg-black/50 border border-white/10 rounded-3xl py-3 px-5 focus:outline-none focus:border-white transition-all text-sm font-medium resize-none"></textarea>
               
               <button className="w-full py-5 bg-white text-black text-xs font-black uppercase italic tracking-[0.3em] rounded-2xl hover:bg-gray-200 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.05)]">
                 Send Message
