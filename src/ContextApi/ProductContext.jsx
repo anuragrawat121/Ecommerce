@@ -26,7 +26,7 @@ export const ProductContextProvider = ({ children }) => {
       cartData[itemId] = {};
       cartData[itemId][size] = 1;
     }
-    setCartItems(cartData);
+    setCartItems(cartData); 
   };
 
   const getCartCount = () => {
